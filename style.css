@@ -231,3 +231,7 @@ svg .cm-path{stroke:var(--amber); stroke-width:1.5; fill:none}
   .side{display:none}
   .main{margin-left:0}
 }
+
+/* project video */
+.pvid .in{padding:20px; display:flex; justify-content:center}
+.pvid video{display:block; width:100%; max-width:340px; height:auto; aspect-ratio:480 / 848; border-radius:var(--r-s); background:#000}

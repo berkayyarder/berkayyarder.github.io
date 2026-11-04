@@ -119,7 +119,7 @@ document.documentElement.classList.add('js');
   }
 })();
 
-// Scroll progress bar, reveal on scroll, and diagrams that draw themselves
+// Scroll progress bar and a few reveals on scroll
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -136,33 +136,19 @@ document.documentElement.classList.add('js');
 
   if (reduce || !('IntersectionObserver' in window)) return;
 
-  // diagrams: give each plain stroke a pathLength of 1 so it can be drawn in
-  var figs = document.querySelectorAll('.pfig svg, .card .shot svg');
-  Array.prototype.forEach.call(figs, function (svg) {
-    svg.classList.add('plot');
-    Array.prototype.forEach.call(svg.querySelectorAll('path, line, rect, circle, ellipse'), function (el) {
-      var c = el.getAttribute('class') || '';
-      if (/\b(dash|hatch|solid|bgfill|hl|grid-r)\b/.test(c) || el.style.strokeDasharray) return;
-      if (el.closest('defs, marker, pattern')) return;
-      el.setAttribute('pathLength', '1');
-    });
-  });
-
-  var targets = document.querySelectorAll('.sec > h2, .sec > .intro, .card, .small, .sk, .teaser, .mail, .ptitle, .summary, .spec, .pfig, .demo, .row, .prose h2');
-  Array.prototype.forEach.call(targets, function (el, i) { el.classList.add('reveal'); });
-  Array.prototype.forEach.call(document.querySelectorAll('.cards .card'), function (el, i) {
-    el.style.transitionDelay = (i % 2) * 90 + 'ms';
-  });
+  var sweep = document.querySelectorAll('.sec > h2, .ptitle');
+  var fade = document.querySelectorAll('.cards .card');
+  Array.prototype.forEach.call(sweep, function (el) { el.classList.add('reveal'); });
+  Array.prototype.forEach.call(fade, function (el, i) { el.classList.add('fade'); el.style.transitionDelay = (i % 2) * 90 + 'ms'; });
+  var targets = Array.prototype.slice.call(sweep).concat(Array.prototype.slice.call(fade));
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (!e.isIntersecting) return;
       e.target.classList.add('in');
-      Array.prototype.forEach.call(e.target.querySelectorAll('.plot'), function (p) { p.classList.add('in'); });
-      if (e.target.classList.contains('plot')) e.target.classList.add('in');
-      setTimeout(function () { e.target.classList.add('in-done'); e.target.style.transitionDelay = ''; }, 1100);
+      setTimeout(function () { var t = e.target; t.classList.add('in-done'); t.style.transitionDelay = ''; if (t.classList.contains('fade')) t.classList.remove('fade', 'in'); }, 1100);
       io.unobserve(e.target);
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-  Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+  targets.forEach(function (el) { io.observe(el); });
 })();

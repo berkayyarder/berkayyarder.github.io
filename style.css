@@ -368,13 +368,9 @@ a{transition:color .18s ease, text-decoration-color .18s ease}
 .js .reveal.in{opacity:1; -webkit-mask-size:100% 100%; mask-size:100% 100%}
 .js .reveal.in-done{-webkit-mask:none; mask:none}
 
-/* diagrams draw themselves */
-.js .plot [pathLength]{stroke-dasharray:1; stroke-dashoffset:1}
-.js .plot.in [pathLength]{stroke-dashoffset:0; transition:stroke-dashoffset 1.4s cubic-bezier(.5,0,.2,1)}
-.js .plot text{opacity:0; transition:opacity .6s ease .7s}
-.js .plot.in text{opacity:1}
-.js .plot .hatch,.js .plot .solid,.js .plot .bgfill{opacity:0; transition:opacity .5s ease .9s}
-.js .plot.in .hatch,.js .plot.in .solid,.js .plot.in .bgfill{opacity:1}
+/* project cards fade in */
+.js .fade{opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease, border-color .25s ease}
+.js .fade.in{opacity:1; transform:none}
 
 /* the home capture sweeps in once on load */
 .js .la svg{animation:sweep 1.3s cubic-bezier(.6,0,.2,1) .15s both}
@@ -383,8 +379,7 @@ a{transition:color .18s ease, text-decoration-color .18s ease}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none !important; animation:none !important}
   .js .reveal{opacity:1; -webkit-mask:none; mask:none}
-  .js .plot [pathLength]{stroke-dasharray:none; stroke-dashoffset:0}
-  .js .plot text,.js .plot .hatch,.js .plot .solid,.js .plot .bgfill{opacity:1}
+  .js .fade{opacity:1; transform:none}
   .card:hover,.tile:hover{transform:none}
   .progress{display:none}
 }

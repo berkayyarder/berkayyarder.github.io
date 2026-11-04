@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real-time scheduling for aircraft cabin monitoring | Berkay Yarder</title>
+<meta name="description" content="A cabin pressure and oxygen monitor for an aircraft, where missing a deadline is not an option. We scheduled it with Rate Monotonic analysis.">
+<meta property="og:title" content="Real-time scheduling for aircraft cabin monitoring | Berkay Yarder">
+<meta property="og:description" content="A cabin pressure and oxygen monitor for an aircraft, where missing a deadline is not an option. We scheduled it with Rate Monotonic analysis.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#111418">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111418'/%3E%3Cpath d='M4 21h5V10h7v11h6V10h6' fill='none' stroke='%23F2B53F' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-next@5.3.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-next@5.3.0/wght-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-mono@5.3.0/index.css">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="5"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkc" d="M0 0 L10 5 L0 10 z"/></marker>
+</defs></svg>
+<header class="side">
+  <a class="me" href="index.html"><img src="photo.jpg" alt="" width="44" height="44"><span><b>Berkay Yarder</b><small>TCS student, University of Twente</small></span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="tree">Menu</button>
+  <nav class="tree" id="tree" aria-label="Site">
+    <div class="root">~/berkay</div>
+    <ul>
+      <li><a href="index.html">home</a></li>
+      <li><a href="index.html#projects">projects/</a>
+        <ul>
+          <li><a href="edge-ai.html">edge-ai</a></li>
+          <li><a href="fpga-sobel.html">fpga-sobel</a></li>
+          <li><a href="cabin-scheduling.html" aria-current="page">cabin-scheduling</a></li>
+          <li><a href="inter-actief.html">inter-actief</a></li>
+          <li><a href="basketball-coach.html">basketball-coach</a></li>
+          <li><a href="frc-drive.html">frc-drive</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="cv.pdf" download="Berkay_Yarder_CV.pdf">cv.pdf</a></li>
+    </ul>
+  </nav>
+  <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
+</header>
+<main class="main" id="content">
+<div class="wrap">
+
+<p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / cabin-scheduling</p>
+<h1 class="ptitle">Real-time scheduling for aircraft cabin monitoring</h1>
+<p class="summary">A cabin pressure and oxygen monitor for an aircraft, where missing a deadline is not an option. We scheduled it with Rate Monotonic analysis.</p>
+<dl class="spec"><div><dt>Year</dt><dd>2026</dd></div><div><dt>Context</dt><dd>SEPP course, University of Twente</dd></div><div><dt>Team</dt><dd>Group project</dd></div><div><dt>Topic</dt><dd>Real-time scheduling</dd></div></dl>
+<ul class="tags"><li>Rate Monotonic</li><li>schedulability analysis</li><li>task models</li><li>Gantt charts</li></ul>
+<figure class="pfig"><div class="in"><svg viewBox="0 0 440 300" role="img" aria-label="Sketch of a Rate Monotonic schedule with five rows: pressure, oxygen, decide, self-test and deploy masks. Deploy masks has the lowest priority and is preempted by the other tasks.">
+<line class="grid-r" x1="120" y1="50" x2="420" y2="50"/><line class="grid-r" x1="120" y1="90" x2="420" y2="90"/><line class="grid-r" x1="120" y1="130" x2="420" y2="130"/><line class="grid-r" x1="120" y1="170" x2="420" y2="170"/><line class="grid-r" x1="120" y1="210" x2="420" y2="210"/>
+<text class="lbl-s" x="20" y="24" style="font-size:12px">high priority</text>
+<text class="lbl-s" x="20" y="54">pressure</text>
+<text class="lbl-s" x="20" y="94">oxygen</text>
+<text class="lbl-s" x="20" y="134">decide</text>
+<text class="lbl-s" x="20" y="174">self-test</text>
+<text class="lbl" x="20" y="214" style="font-size:14px">deploy masks</text>
+<text class="lbl-s" x="20" y="242" style="font-size:12px">low priority</text>
+<rect class="solid" x="120" y="42" width="12" height="16"/><rect class="solid" x="180" y="42" width="12" height="16"/><rect class="solid" x="240" y="42" width="12" height="16"/><rect class="solid" x="300" y="42" width="12" height="16"/><rect class="solid" x="360" y="42" width="12" height="16"/>
+<rect class="ink" x="132" y="82" width="12" height="16"/><rect class="ink" x="210" y="82" width="12" height="16"/><rect class="ink" x="312" y="82" width="12" height="16"/><rect class="ink" x="390" y="82" width="12" height="16"/>
+<rect class="ink" x="144" y="122" width="20" height="16"/><rect class="ink" x="252" y="122" width="20" height="16"/><rect class="ink" x="372" y="122" width="20" height="16"/>
+<rect class="ink" x="164" y="162" width="16" height="16"/><rect class="ink" x="192" y="162" width="8" height="16"/><rect class="ink" x="324" y="162" width="24" height="16"/>
+<rect class="hatch" x="222" y="202" width="18" height="16"/>
+<rect class="hatch" x="272" y="202" width="12" height="16"/>
+<line class="ink-thin dash" x1="240" y1="210" x2="272" y2="210"/>
+<line class="ink" x1="220" y1="242" x2="220" y2="223" marker-end="url(#ah)"/>
+<text class="lbl-s mid" x="220" y="258" style="font-size:12px">pressure drops</text>
+<line class="ink-thin" x1="120" y1="226" x2="420" y2="226"/>
+<text class="lbl-s end" x="420" y="244" style="font-size:12px">time</text>
+<rect class="hl" x="12" y="196" width="104" height="24" rx="4"/>
+<text class="cm" x="24" y="290">// most critical task, lowest priority</text>
+<line class="cm-line" x1="112" y1="276" x2="104" y2="226" marker-end="url(#ahc)"/>
+</svg></div><figcaption><b>Fig. 3</b> A Rate Monotonic schedule, sketched. Shorter period means higher priority, so mask deployment runs last and gets preempted. Not to scale.</figcaption></figure>
+<div class="prose">
+<h2>The system</h2>
+<p>Sensors measure the cabin pressure and the oxygen level. If the cabin loses pressure, the system has to notice it and deploy the oxygen masks within a hard deadline. We split the work into five tasks: reading pressure, reading oxygen, deciding whether there is a decompression, a sensor self-test, and deploying the masks.</p>
+<h2>How we scheduled it</h2>
+<p>Rate Monotonic gives every task a fixed priority: the shorter its period, the higher its priority. We set each task’s period, deadline and worst-case execution time, checked that the whole task set is schedulable and drew the schedule as Gantt charts. Then we built the logic that deploys the masks.</p>
+<h2>The interesting part</h2>
+<p>The safety-critical task ended up with the lowest priority. Mask deployment is rare, so it has the longest period, and Rate Monotonic ranks it last. That looks wrong for the most important task in the system, so we had to analyse it properly instead of ignoring it.</p>
+<p>If the task set is schedulable, every task still meets its deadline, including the one at the bottom. It just gets preempted on the way, which is what the sketch shows.</p>
+<h2>Why it matters to me</h2>
+<p class="result">It’s the clearest example in my degree so far of the kind of work I want to do professionally.</p>
+</div>
+<nav class="pn" aria-label="More projects"><a class="prev" href="fpga-sobel.html"><small>Previous</small>FPGA Sobel accelerator and stack processor</a><a class="next" href="inter-actief.html"><small>Next</small>Tutoring platform for Inter-Actief</a></nav>
+
+<footer class="foot">
+  <span>Muhammed Berkay Yarder, Enschede</span>
+  <span>Last updated November 2026. Plain HTML and CSS, hosted on GitHub Pages.</span>
+</footer>
+</div>
+</main>
+</body>
+</html>

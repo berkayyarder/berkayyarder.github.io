@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge AI ecological monitoring system | Berkay Yarder</title>
+<meta name="description" content="A camera on a farm that spots animals and decides whether they are a threat to livestock. Everything runs on the device, with no cloud connection.">
+<meta property="og:title" content="Edge AI ecological monitoring system | Berkay Yarder">
+<meta property="og:description" content="A camera on a farm that spots animals and decides whether they are a threat to livestock. Everything runs on the device, with no cloud connection.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#111418">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111418'/%3E%3Cpath d='M4 21h5V10h7v11h6V10h6' fill='none' stroke='%23F2B53F' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-next@5.3.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-next@5.3.0/wght-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-mono@5.3.0/index.css">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="5"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkc" d="M0 0 L10 5 L0 10 z"/></marker>
+</defs></svg>
+<header class="side">
+  <a class="me" href="index.html"><img src="photo.jpg" alt="" width="44" height="44"><span><b>Berkay Yarder</b><small>TCS student, University of Twente</small></span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="tree">Menu</button>
+  <nav class="tree" id="tree" aria-label="Site">
+    <div class="root">~/berkay</div>
+    <ul>
+      <li><a href="index.html">home</a></li>
+      <li><a href="index.html#projects">projects/</a>
+        <ul>
+          <li><a href="edge-ai.html" aria-current="page">edge-ai</a></li>
+          <li><a href="fpga-sobel.html">fpga-sobel</a></li>
+          <li><a href="cabin-scheduling.html">cabin-scheduling</a></li>
+          <li><a href="inter-actief.html">inter-actief</a></li>
+          <li><a href="basketball-coach.html">basketball-coach</a></li>
+          <li><a href="frc-drive.html">frc-drive</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="cv.pdf" download="Berkay_Yarder_CV.pdf">cv.pdf</a></li>
+    </ul>
+  </nav>
+  <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
+</header>
+<main class="main" id="content">
+<div class="wrap">
+
+<p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / edge-ai</p>
+<h1 class="ptitle">Edge AI ecological monitoring system</h1>
+<p class="summary">A camera on a farm that spots animals and decides whether they are a threat to livestock. Everything runs on the device, with no cloud connection.</p>
+<dl class="spec"><div><dt>Year</dt><dd>2026</dd></div><div><dt>Context</dt><dd>Intelligent Embedded Systems capstone, University of Twente</dd></div><div><dt>Team</dt><dd>4 students</dd></div><div><dt>Hardware</dt><dd>Raspberry Pi 5 with Hailo AI HAT+ (Hailo-10H, 40 TOPS)</dd></div></dl>
+<ul class="tags"><li>YOLO11</li><li>PyTorch</li><li>ONNX</li><li>Hailo Dataflow Compiler</li><li>Python</li><li>SQLite</li></ul>
+<figure class="pfig"><div class="in"><svg viewBox="0 0 440 400" role="img" aria-label="Pipeline sketch: camera to Raspberry Pi 5 CPU, then the Hailo-10H NPU running YOLO11 in INT8 and NMS on the chip, then threat rules, a SQLite log and a dashboard.">
+<rect class="ink" x="200" y="24" width="56" height="40" rx="4"/>
+<rect class="ink" x="206" y="18" width="13" height="6" rx="1"/>
+<circle class="ink" cx="228" cy="44" r="10"/>
+<text class="lbl-s mid" x="228" y="84">camera</text>
+<line class="ink" x1="258" y1="44" x2="272" y2="44" marker-end="url(#ah)"/>
+<rect class="ink" x="276" y="20" width="144" height="50" rx="3"/>
+<text class="lbl mid" x="348" y="42">Pi 5 CPU</text>
+<text class="lbl-s mid" x="348" y="60">capture, resize</text>
+<line class="ink" x1="348" y1="70" x2="348" y2="114" marker-end="url(#ah)"/>
+<rect class="ink dash" x="20" y="118" width="400" height="96" rx="6"/>
+<text class="lbl-s" x="32" y="137">Hailo-10H NPU, 40 TOPS</text>
+<rect class="ink" x="40" y="148" width="180" height="50" rx="3"/>
+<text class="lbl mid" x="130" y="169">YOLO11</text>
+<text class="lbl-s mid" x="130" y="187">INT8, pruned 15%</text>
+<line class="ink" x1="220" y1="173" x2="268" y2="173" marker-end="url(#ah)"/>
+<rect class="ink" x="272" y="148" width="128" height="50" rx="3"/>
+<text class="lbl mid" x="336" y="178">NMS on chip</text>
+<line class="ink" x1="336" y1="214" x2="336" y2="254" marker-end="url(#ah)"/>
+<rect class="ink" x="186" y="258" width="234" height="52" rx="3"/>
+<text class="lbl mid" x="303" y="279">Threat rules</text>
+<text class="lbl-s mid" x="303" y="297">thresholds per class, over time</text>
+<line class="ink" x1="303" y1="310" x2="303" y2="342" marker-end="url(#ah)"/>
+<rect class="ink" x="228" y="346" width="150" height="42" rx="3"/>
+<text class="lbl mid" x="303" y="372">SQLite log</text>
+<line class="ink" x1="228" y1="367" x2="174" y2="367" marker-end="url(#ah)"/>
+<rect class="ink" x="30" y="346" width="140" height="42" rx="3"/>
+<text class="lbl mid" x="100" y="372">Dashboard</text>
+<rect class="hl" x="264" y="140" width="144" height="66" rx="4"/>
+<text class="cm end" x="328" y="240">// only boxes leave the chip</text>
+<text class="cm" x="22" y="268">// 30% pruning</text>
+<text class="cm" x="22" y="285">// killed fox</text>
+<text class="cm" x="22" y="302">// recall, so</text>
+<text class="cm" x="22" y="319">// we kept 15%</text>
+<line class="cm-line" x1="58" y1="252" x2="80" y2="206" marker-end="url(#ahc)"/>
+</svg></div><figcaption><b>Fig. 1</b> The detection pipeline. Everything after the camera runs on the device.</figcaption></figure>
+<div class="prose">
+<h2>How it works</h2>
+<p>The camera feeds frames to the Pi’s CPU, which only captures and resizes them. Detection runs on the Hailo-10H: a YOLO11 model trained on six animal classes from Open Images V7, plus non-animal examples so that furniture and vehicles don’t trigger it.</p>
+<p>Non-maximum suppression also runs on the chip, so the CPU receives a short list of boxes instead of raw model output. A separate rule layer turns detections into a threat decision, with its own confidence threshold for each class and a check over several frames. Keeping those rules outside the model means the policy can change without retraining. Every event goes into a SQLite log, and a live dashboard reads from it.</p>
+<h2>My part</h2>
+<p>Getting the model onto the accelerator without losing the classes that mattered. I pruned the network by 15%. At 30% the fox recall collapsed, so we rejected that. I compiled the model to INT8 with the Hailo Dataflow Compiler and moved NMS onto the chip. I also built the live dashboard.</p>
+<h2>What I learned</h2>
+<p>Calibration images for quantisation have to be raw 0 to 255 pixel values. If they are normalised, the model quietly loses accuracy and nothing warns you.</p>
+<p>A dataflow chip like Hailo’s isn’t compute-bound, so the classic roofline model points at the wrong bottleneck.</p>
+<h2>Result</h2>
+<p class="result">The pruned FP32 model reached 0.76 mAP50-95. We deployed and benchmarked it on the Hailo-10H with on-chip NMS and delivered the capstone with a full report.</p>
+</div>
+<nav class="pn" aria-label="More projects"><a class="next" href="fpga-sobel.html"><small>Next</small>FPGA Sobel accelerator and stack processor</a></nav>
+
+<footer class="foot">
+  <span>Muhammed Berkay Yarder, Enschede</span>
+  <span>Last updated November 2026. Plain HTML and CSS, hosted on GitHub Pages.</span>
+</footer>
+</div>
+</main>
+</body>
+</html>

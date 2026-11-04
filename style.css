@@ -317,3 +317,74 @@ html:not(.js) .la-send{display:none}
   .main.home .hero h1{font-size:clamp(2.4rem,3vw,3.2rem); margin-top:8px}
   .main.home .actions{margin-bottom:0}
 }
+
+/* ================= motion and interaction ================= */
+/* scroll progress: a thin amber trace along the top */
+.progress{position:fixed; top:0; left:0; right:0; height:2px; background:var(--amber); transform-origin:0 50%; transform:scaleX(0); z-index:30; pointer-events:none}
+
+/* links and buttons */
+a{transition:color .18s ease, text-decoration-color .18s ease}
+.btn{background:linear-gradient(var(--amber),var(--amber)) no-repeat 0 0 / 0% 100%; transition:background-size .28s cubic-bezier(.6,0,.2,1), color .28s ease}
+.btn:hover{background-color:transparent; background-size:100% 100%; color:var(--bg)}
+.actions .plain{background:linear-gradient(var(--amber),var(--amber)) no-repeat 0 100% / 0% 1px; text-decoration:none; padding-bottom:2px; transition:background-size .25s ease, color .2s}
+.actions .plain:hover{background-size:100% 1px}
+
+/* sidebar tree */
+.tree a{transition:color .15s, background-color .15s, padding-left .2s ease}
+.tree a:hover{padding-left:10px}
+
+/* project cards: the sketch lights up in amber */
+.card{transition:border-color .25s ease, transform .25s ease}
+.card:hover{transform:translateY(-3px)}
+.card h3{transition:color .2s}
+.card .shot svg .ink,.card .shot svg .ink-thin{transition:stroke .35s ease}
+.card .shot svg .solid{transition:fill .35s ease}
+.card:hover .shot svg .ink,.card:hover .shot svg .ink-thin{stroke:var(--amber)}
+.card:hover .shot svg .solid{fill:var(--amber)}
+.card .tags li{transition:border-color .25s, color .25s}
+.card:hover .tags li{border-color:#4A525C; color:var(--text)}
+
+/* skill tiles */
+.tile{transition:border-color .2s, color .2s, transform .2s, background-color .2s}
+.tile .ico,.tile .glyph,.tile svg{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.tile:hover{border-color:var(--amber); color:var(--amber); transform:translateY(-3px); background:var(--panel-2)}
+.tile:hover .ico,.tile:hover .glyph,.tile:hover svg{transform:scale(1.12)}
+
+/* screenshots and figures */
+.shotfig .in{overflow:hidden}
+.shotfig img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.shotfig .in:hover img{transform:scale(1.02); opacity:1}
+.pfig{transition:border-color .25s}
+.pfig:hover{border-color:#3A414A}
+
+/* demo controls */
+.ctl input[type=range]{cursor:pointer}
+.ctl:hover output{color:var(--amber)}
+.btns button{transition:border-color .15s, color .15s, transform .1s}
+.btns button:active{transform:translateY(1px)}
+
+/* scroll reveal: sweeps in left to right like a trace */
+.js .reveal{opacity:0; -webkit-mask:linear-gradient(#000,#000) no-repeat 0 0 / 0% 100%; mask:linear-gradient(#000,#000) no-repeat 0 0 / 0% 100%; transition:-webkit-mask-size .8s cubic-bezier(.6,0,.2,1), mask-size .8s cubic-bezier(.6,0,.2,1), opacity .45s ease}
+.js .reveal.in{opacity:1; -webkit-mask-size:100% 100%; mask-size:100% 100%}
+.js .reveal.in-done{-webkit-mask:none; mask:none}
+
+/* diagrams draw themselves */
+.js .plot [pathLength]{stroke-dasharray:1; stroke-dashoffset:1}
+.js .plot.in [pathLength]{stroke-dashoffset:0; transition:stroke-dashoffset 1.4s cubic-bezier(.5,0,.2,1)}
+.js .plot text{opacity:0; transition:opacity .6s ease .7s}
+.js .plot.in text{opacity:1}
+.js .plot .hatch,.js .plot .solid,.js .plot .bgfill{opacity:0; transition:opacity .5s ease .9s}
+.js .plot.in .hatch,.js .plot.in .solid,.js .plot.in .bgfill{opacity:1}
+
+/* the home capture sweeps in once on load */
+.js .la svg{animation:sweep 1.3s cubic-bezier(.6,0,.2,1) .15s both}
+@keyframes sweep{from{clip-path:inset(0 100% 0 0)} to{clip-path:inset(0 0 0 0)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none !important; animation:none !important}
+  .js .reveal{opacity:1; -webkit-mask:none; mask:none}
+  .js .plot [pathLength]{stroke-dasharray:none; stroke-dashoffset:0}
+  .js .plot text,.js .plot .hatch,.js .plot .solid,.js .plot .bgfill{opacity:1}
+  .card:hover,.tile:hover{transform:none}
+  .progress{display:none}
+}

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="site.js" defer></script>
+<script src="demos.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -49,7 +50,7 @@
   </nav>
   <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
 </header>
-<main class="main" id="content">
+<main class="main has-demo" id="content">
 <div class="wrap">
 
 <p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / am-demodulator</p>
@@ -105,6 +106,7 @@
 <h2>Result</h2>
 <p class="result">My part of the project, the demodulator, is finished. The team runs everything, from AM decoding to navigation, on the same Pico 2W.</p>
 </div>
+<section class="demo" data-demo="am-demodulator" aria-labelledby="demo-am-demodulator"><p class="demo-k">Try it</p><h2 id="demo-am-demodulator">Envelope detector</h2><p class="demo-i">Change C5 and watch the detector output. Too small and the 40 kHz carrier ripples through, too big and the bits smear together.</p><div class="demo-view" aria-live="polite"></div><div class="demo-ctl"><label class="ctl"><span>C5</span><input type="range" id="d-c" min="0" max="8" step="1" value="4"><output for="d-c" data-unit=""></output></label></div><p class="demo-out"></p><p class="demo-n">Simulated: 40 kHz carrier, 1 ms bits, R9 = 10 kΩ. My circuit uses 18 nF.</p></section>
 <nav class="pn" aria-label="More projects"><a class="prev" href="edge-ai.html"><small>Previous</small>Edge AI ecological monitoring system</a><a class="next" href="fpga-sobel.html"><small>Next</small>FPGA Sobel accelerator and stack processor</a></nav>
 
 <footer class="foot">

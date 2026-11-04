@@ -244,3 +244,76 @@ svg .cm-path{stroke:var(--amber); stroke-width:1.5; fill:none}
 .shotfig.tall .in{padding:20px; text-align:center}
 .shotfig.tall img{max-width:440px; margin:0 auto; border-radius:var(--r-s)}
 .shotfig .in:hover img{opacity:.92}
+
+/* send your own text */
+.la-send{display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; padding:10px 14px; border-top:1px solid var(--line); background:var(--panel); font-family:var(--mono); font-size:12.5px; color:var(--dim)}
+.la-send label{color:var(--text)}
+.la-send input{font-family:var(--mono); font-size:14px; color:var(--amber); background:var(--screen); border:1px solid var(--line); border-radius:var(--r-s); padding:6px 10px; width:14ch; letter-spacing:.04em}
+.la-send input::placeholder{color:#5A616B}
+.la-send input:focus{outline:none; border-color:var(--amber)}
+.no-js .la-send{display:none}
+html:not(.js) .la-send{display:none}
+
+/* ---------- project demos ---------- */
+.demo{margin:56px 0 0; border:1px solid var(--line); border-radius:var(--r); background:var(--panel); padding:16px 18px 18px}
+.demo-k{font-family:var(--mono); font-size:12.5px; color:var(--amber); margin:0 0 4px}
+.demo h2{font-family:var(--mono); font-size:1.12rem; font-weight:650; margin:0 0 6px}
+.demo-i{font-size:14.5px; line-height:1.5; color:var(--dim); margin:0 0 12px}
+.demo-view{background:var(--screen); border:1px solid var(--line); border-radius:var(--r-s); padding:8px; min-height:120px; touch-action:none}
+.demo-view svg{display:block; width:100%; height:auto; user-select:none}
+.demo-ctl{display:grid; gap:10px; margin:14px 0 4px}
+.ctl{display:grid; grid-template-columns:1fr auto; gap:2px 10px; align-items:center; font-family:var(--mono); font-size:12.5px; color:var(--dim)}
+.ctl input[type=range]{grid-column:1 / -1; width:100%; accent-color:var(--amber); margin:2px 0 0}
+.ctl output{color:var(--text)}
+.ctl select{grid-column:1 / -1; font-family:var(--mono); font-size:13px; color:var(--text); background:var(--screen); border:1px solid var(--line); border-radius:var(--r-s); padding:5px 8px}
+.chk{font-family:var(--mono); font-size:12.5px; color:var(--dim); display:flex; gap:8px; align-items:center}
+.chk input{accent-color:var(--amber)}
+.btns{display:flex; gap:8px}
+.btns button{font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--screen); border:1px solid var(--line); border-radius:var(--r-s); padding:6px 12px; cursor:pointer}
+.btns button:hover{border-color:var(--amber); color:var(--amber)}
+.demo-out{font-size:14px; line-height:1.5; margin:10px 0 0; min-height:2.6em}
+.demo-out b{font-weight:600}
+.demo-out .ok{color:#8FCB8A}
+.demo-out .bad{color:#F08A6C}
+.demo-n{font-family:var(--mono); font-size:11.5px; color:#6F767F; margin:8px 0 0}
+.demo svg .d-grid{stroke:var(--line); stroke-width:1; fill:none}
+.demo svg .d-ax{font-family:var(--mono); font-size:9.5px; fill:var(--dim)}
+.demo svg .d-on{fill:var(--amber)}
+.demo svg .d-off{fill:#3A414A}
+.demo svg .d-run{fill:var(--text); opacity:.75}
+.demo svg .d-mark{fill:none; stroke:var(--text); stroke-width:1; stroke-dasharray:3 2}
+.demo svg .d-thr{stroke:var(--cyan); stroke-width:1.5; stroke-dasharray:5 3}
+.demo svg .d-tick{stroke:var(--dim); stroke-width:1}
+.demo svg .d-band{fill:rgba(232,229,221,.16); stroke:none}
+.demo svg .d-env{fill:none; stroke:var(--amber); stroke-width:1.8}
+.demo svg .d-px0{fill:#1B2026; cursor:crosshair}
+.demo svg .d-px1{fill:var(--text); cursor:crosshair}
+.demo svg .d-edge{fill:var(--amber)}
+.demo svg .d-body{fill:none; stroke:var(--text); stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.demo svg .d-ball{fill:none; stroke:var(--amber); stroke-width:1.6}
+.demo svg .d-jok{fill:#8FCB8A}
+.demo svg .d-jbad{fill:#F08A6C}
+.demo svg .d-wheel{fill:var(--text)}
+.demo svg .d-arrow{stroke:var(--amber); stroke-width:1.8}
+.demo svg .d-tickm{fill:none; stroke:var(--dim); stroke-width:1.5}
+.d-list{list-style:none; margin:0; padding:2px 4px; font-size:13.5px}
+.d-list li{display:grid; grid-template-columns:62px 1fr; gap:0 10px; padding:6px 0; border-bottom:1px solid var(--line)}
+.d-list li:last-child{border-bottom:0}
+.d-list li span:last-child{grid-column:2; color:var(--dim); font-size:12.5px}
+.d-list em{font-style:normal; font-family:var(--mono); font-size:11px; color:var(--amber); border:1px solid rgba(242,181,63,.5); border-radius:3px; padding:0 4px; margin-left:4px}
+.d-empty{margin:20px 8px; color:var(--dim); font-size:14px}
+
+/* ---------- wide screens: demo on the right, home hero side by side ---------- */
+@media (min-width:1600px){
+  .main.has-demo{display:grid; grid-template-columns:minmax(0,880px) 360px; column-gap:64px; align-items:start}
+  .main.has-demo .wrap{display:contents}
+  .main.has-demo .wrap > *{grid-column:1}
+  .main.has-demo .wrap > .demo{grid-column:2; grid-row:1 / span 40; position:sticky; top:48px; margin:0}
+  .main.home .wrap{max-width:1380px}
+  .main.home .hero{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.45fr); column-gap:64px; align-items:start}
+  .main.home .hero > *{grid-column:1}
+  .main.home .hero > .la{grid-column:2; grid-row:1 / span 2}
+  .main.home .hero > .cap{grid-column:2; grid-row:3; align-self:start}
+  .main.home .hero h1{font-size:clamp(2.4rem,3vw,3.2rem); margin-top:8px}
+  .main.home .actions{margin-bottom:0}
+}

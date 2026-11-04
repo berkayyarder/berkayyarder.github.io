@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="site.js" defer></script>
+<script src="demos.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -49,7 +50,7 @@
   </nav>
   <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
 </header>
-<main class="main" id="content">
+<main class="main has-demo" id="content">
 <div class="wrap">
 
 <p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / fpga-sobel</p>
@@ -122,6 +123,7 @@
 <h2>Result</h2>
 <p class="result">A working accelerator with correct AXI4-Stream backpressure, verified in simulation, with a report on the design decisions.</p>
 </div>
+<section class="demo" data-demo="fpga-sobel" aria-labelledby="demo-fpga-sobel"><p class="demo-k">Try it</p><h2 id="demo-fpga-sobel">Sobel filter</h2><p class="demo-i">Click or drag on the left grid to draw. The right grid shows the edge strength, |Gx| + |Gy|, the same thing the accelerator computes per pixel.</p><div class="demo-view" aria-live="polite"></div><div class="demo-ctl"><div class="btns"><button type="button" data-act="clear">Clear</button><button type="button" data-act="reset">Reset</button></div></div><p class="demo-out"></p><p class="demo-n">12 × 12 pixels, computed in your browser.</p></section>
 <nav class="pn" aria-label="More projects"><a class="prev" href="am-demodulator.html"><small>Previous</small>AM demodulator for a maze robot</a><a class="next" href="cabin-scheduling.html"><small>Next</small>Real-time scheduling for aircraft cabin monitoring</a></nav>
 
 <footer class="foot">

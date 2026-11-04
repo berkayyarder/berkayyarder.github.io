@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="site.js" defer></script>
+<script src="demos.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -49,7 +50,7 @@
   </nav>
   <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
 </header>
-<main class="main" id="content">
+<main class="main has-demo" id="content">
 <div class="wrap">
 
 <p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / edge-ai</p>
@@ -105,6 +106,7 @@
 <h2>Result</h2>
 <p class="result">The pruned FP32 model reached 0.76 mAP50-95. We deployed and benchmarked it on the Hailo-10H with on-chip NMS and delivered the capstone with a full report.</p>
 </div>
+<section class="demo" data-demo="edge-ai" aria-labelledby="demo-edge-ai"><p class="demo-k">Try it</p><h2 id="demo-edge-ai">Threat rule</h2><p class="demo-i">Drag the threshold and the number of frames in a row. The rule only raises an alarm when the detector is sure for several frames in a row.</p><div class="demo-view" aria-live="polite"></div><div class="demo-ctl"><label class="ctl"><span>Fox threshold</span><input type="range" id="d-thr" min="0.3" max="0.9" step="0.01" value="0.6"><output for="d-thr" data-unit=""></output></label><label class="ctl"><span>Frames in a row</span><input type="range" id="d-run" min="1" max="5" step="1" value="3"><output for="d-run" data-unit=""></output></label></div><p class="demo-out"></p><p class="demo-n">Made-up fox confidences over 12 frames.</p></section>
 <nav class="pn" aria-label="More projects"><a class="next" href="am-demodulator.html"><small>Next</small>AM demodulator for a maze robot</a></nav>
 
 <footer class="foot">

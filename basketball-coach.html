@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="site.js" defer></script>
+<script src="demos.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -49,7 +50,7 @@
   </nav>
   <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
 </header>
-<main class="main" id="content">
+<main class="main has-demo" id="content">
 <div class="wrap">
 
 <p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / basketball-coach</p>
@@ -94,6 +95,7 @@
 <h2>Testing</h2>
 <p>We tested the prototype with users and watched how they handled camera positioning, the feedback, the history and the filters. That led to concrete improvements: hands-free recording, clearer favourites and more consistent feedback.</p>
 </div>
+<section class="demo" data-demo="basketball-coach" aria-labelledby="demo-basketball-coach"><p class="demo-k">Try it</p><h2 id="demo-basketball-coach">Form check</h2><p class="demo-i">Move the elbow and knee angles. The ranges are the ones our app uses.</p><div class="demo-view" aria-live="polite"></div><div class="demo-ctl"><label class="ctl"><span>Shooting elbow</span><input type="range" id="d-elb" min="40" max="170" step="1" value="140"><output for="d-elb" data-unit="°"></output></label><label class="ctl"><span>Knee bend</span><input type="range" id="d-knee" min="90" max="180" step="1" value="170"><output for="d-knee" data-unit="°"></output></label></div><p class="demo-out"></p><p class="demo-n">Good ranges: elbow 70 to 110°, knee 105 to 145°.</p></section>
 <nav class="pn" aria-label="More projects"><a class="prev" href="inter-actief.html"><small>Previous</small>Tutoring platform for Inter-Actief</a><a class="next" href="frc-drive.html"><small>Next</small>FRC robot drive system</a></nav>
 
 <footer class="foot">

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="site.js" defer></script>
+<script src="demos.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -49,7 +50,7 @@
   </nav>
   <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
 </header>
-<main class="main" id="content">
+<main class="main home" id="content">
 <div class="wrap">
 
 <section class="hero" aria-labelledby="name">
@@ -64,8 +65,9 @@
     <div class="la-head"><span>name.sal</span><span>D0 decoded as UART, 115200 baud, 8N1</span></div>
     <div class="la-scroll"><svg viewBox="0 0 1000 214" data-text="BERKAY" role="img" aria-label="Logic analyser capture of a UART line sending the letters B, E, R, K, A, Y at 115200 baud, each frame decoded above the trace."><line class="grid-l" x1="140.0" y1="18" x2="140.0" y2="176"/><line class="grid-l" x1="289.8" y1="18" x2="289.8" y2="176"/><line class="grid-l" x1="439.5" y1="18" x2="439.5" y2="176"/><line class="grid-l" x1="589.3" y1="18" x2="589.3" y2="176"/><line class="grid-l" x1="739.0" y1="18" x2="739.0" y2="176"/><line class="grid-l" x1="888.8" y1="18" x2="888.8" y2="176"/><line class="gut" x1="96" y1="14" x2="96" y2="180"/><text class="chl" x="14" y="89">D0 TX</text><text class="chl" x="14" y="155">D1 LED</text><rect class="bub" x="153" y="30" width="104" height="24" rx="4"/><text class="bubt" x="205" y="47">B  0x42</text><rect class="bub" x="283" y="30" width="104" height="24" rx="4"/><text class="bubt" x="335" y="47">E  0x45</text><rect class="bub" x="413" y="30" width="104" height="24" rx="4"/><text class="bubt" x="465" y="47">R  0x52</text><rect class="bub" x="543" y="30" width="104" height="24" rx="4"/><text class="bubt" x="595" y="47">K  0x4B</text><rect class="bub" x="673" y="30" width="104" height="24" rx="4"/><text class="bubt" x="725" y="47">A  0x41</text><rect class="bub" x="803" y="30" width="104" height="24" rx="4"/><text class="bubt" x="855" y="47">Y  0x59</text><path class="tx" d="M100 70 H140 V98 H153 H166 V70 H179 V98 H192 H205 H218 H231 V70 H244 V98 H257 V70 H270 V98 H283 V70 H296 V98 H309 V70 H322 V98 H335 H348 H361 V70 H374 V98 H387 V70 H400 V98 H413 H426 V70 H439 V98 H452 H465 V70 H478 V98 H491 V70 H504 V98 H517 V70 H530 V98 H543 V70 H556 H569 V98 H582 V70 H595 V98 H608 H621 V70 H634 V98 H647 V70 H660 V98 H673 V70 H686 V98 H699 H712 H725 H738 H751 V70 H764 V98 H777 V70 H790 V98 H803 V70 H816 V98 H829 H842 V70 H855 H868 V98 H881 V70 H894 V98 H907 V70 H920 H990"/><path class="led" d="M100 162 H132 V138 H928 V162 H990"/><line class="axis" x1="100" y1="184" x2="990" y2="184"/><line class="axis" x1="140.0" y1="184" x2="140.0" y2="190"/><text class="tick" x="140.0" y="205">0 µs</text><line class="axis" x1="289.8" y1="184" x2="289.8" y2="190"/><text class="tick" x="289.8" y="205">100 µs</text><line class="axis" x1="439.5" y1="184" x2="439.5" y2="190"/><text class="tick" x="439.5" y="205">200 µs</text><line class="axis" x1="589.3" y1="184" x2="589.3" y2="190"/><text class="tick" x="589.3" y="205">300 µs</text><line class="axis" x1="739.0" y1="184" x2="739.0" y2="190"/><text class="tick" x="739.0" y="205">400 µs</text><line class="axis" x1="888.8" y1="184" x2="888.8" y2="190"/><text class="tick" x="888.8" y="205">500 µs</text><line class="cur" x1="-10" y1="16" x2="-10" y2="180"/></svg></div>
     <div class="la-read" aria-live="polite"><span>Point at the capture to measure it.</span></div>
+    <div class="la-send"><label for="send">Send your own text</label><input id="send" type="text" maxlength="8" autocomplete="off" spellcheck="false" placeholder="BERKAY"><span class="hint">up to 8 characters</span></div>
   </figure>
-  <p class="cap">My name as it leaves a UART pin. Each letter is one frame: a start bit, eight data bits with the least significant bit first, and a stop bit.</p>
+  <p class="cap">My name as it leaves a UART pin. Each letter is one frame: a start bit, eight data bits with the least significant bit first, and a stop bit. Type something to send your own.</p>
 </section>
 
 <section class="sec" id="projects" aria-labelledby="projects-title">

@@ -27,24 +27,24 @@
 <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkc" d="M0 0 L10 5 L0 10 z"/></marker>
 </defs></svg>
 <header class="side">
-  <a class="me" href="index.html"><img src="photo.jpg" alt="" width="44" height="44"><span><b>Berkay Yarder</b><small>TCS student, University of Twente</small></span></a>
+  <a class="me" href="/"><img src="photo.jpg" alt="" width="44" height="44"><span><b>Berkay Yarder</b><small>TCS student, University of Twente</small></span></a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="tree">Menu</button>
   <nav class="tree" id="tree" aria-label="Site">
     <div class="root">~/berkay</div>
     <ul>
-      <li><a href="index.html" aria-current="page">home</a></li>
-      <li><a href="index.html#projects">projects/</a>
+      <li><a href="/" aria-current="page">home</a></li>
+      <li><a href="/#projects">projects/</a>
         <ul>
-          <li><a href="edge-ai.html">edge-ai</a></li>
-          <li><a href="am-demodulator.html">am-demodulator</a></li>
-          <li><a href="fpga-sobel.html">fpga-sobel</a></li>
-          <li><a href="cabin-scheduling.html">cabin-scheduling</a></li>
-          <li><a href="inter-actief.html">inter-actief</a></li>
-          <li><a href="basketball-coach.html">basketball-coach</a></li>
-          <li><a href="frc-drive.html">frc-drive</a></li>
+          <li><a href="/edge-ai">edge-ai</a></li>
+          <li><a href="/am-demodulator">am-demodulator</a></li>
+          <li><a href="/fpga-sobel">fpga-sobel</a></li>
+          <li><a href="/cabin-scheduling">cabin-scheduling</a></li>
+          <li><a href="/inter-actief">inter-actief</a></li>
+          <li><a href="/basketball-coach">basketball-coach</a></li>
+          <li><a href="/frc-drive">frc-drive</a></li>
         </ul>
       </li>
-      <li><a href="about.html">about</a></li>
+      <li><a href="/about">about</a></li>
       <li><a href="cv.pdf" download="Berkay_Yarder_CV.pdf">cv.pdf</a></li>
     </ul>
   </nav>
@@ -59,7 +59,7 @@
   <div class="actions">
     <a class="btn" href="mailto:mberkayyarder@gmail.com">Email me</a>
     <a class="plain" href="cv.pdf" download="Berkay_Yarder_CV.pdf">Download my CV</a>
-    <a class="plain" href="about.html">About me</a>
+    <a class="plain" href="/about">About me</a>
   </div>
   <figure class="la" style="margin:0">
     <div class="la-head"><span>name.sal</span><span>D0 decoded as UART, 115200 baud, 8N1</span></div>
@@ -74,7 +74,7 @@
   <h2 id="projects-title">Projects</h2>
   <p class="intro">Seven things I’ve built, from my degree and from before it. Each one has its own page with a sketch of how it works and what my part was.</p>
   <div class="cards">
-<a class="card wide" href="edge-ai.html"><div class="shot"><svg viewBox="0 0 440 400" aria-hidden="true" focusable="false">
+<a class="card wide" href="/edge-ai"><div class="shot"><svg viewBox="0 0 440 400" aria-hidden="true" focusable="false">
 <rect class="ink" x="200" y="24" width="56" height="40" rx="4"/>
 <rect class="ink" x="206" y="18" width="13" height="6" rx="1"/>
 <circle class="ink" cx="228" cy="44" r="10"/>
@@ -110,7 +110,7 @@
 <text class="cm" x="22" y="319">// we kept 15%</text>
 <line class="cm-line" x1="58" y1="252" x2="80" y2="206" marker-end="url(#ahc)"/>
 </svg></div><div class="body"><span class="meta">2026, Intelligent Embedded Systems capstone</span><h3>Edge AI ecological monitoring system</h3><p>A farm camera that spots animals and decides whether they threaten livestock. It runs fully on a Raspberry Pi 5 with a Hailo-10H accelerator.</p><ul class="tags"><li>YOLO11</li><li>Hailo</li><li>INT8</li><li>Python</li><li>SQLite</li></ul></div></a>
-<a class="card wide" href="am-demodulator.html"><div class="shot"><svg viewBox="0 0 440 300" aria-hidden="true" focusable="false">
+<a class="card wide" href="/am-demodulator"><div class="shot"><svg viewBox="0 0 440 300" aria-hidden="true" focusable="false">
 <text class="cm" x="15" y="16">// everything biased at VMID = 2.5 V</text>
 <rect class="ink" x="15" y="30" width="120" height="50" rx="3"/>
 <text class="lbl mid" x="75" y="52">Receiver</text><text class="lbl-s mid" x="75" y="70">40 kHz ultrasonic</text>
@@ -140,7 +140,7 @@
 <text class="lbl-s mid" x="40" y="279" style="font-size:12px">bit 2</text><text class="lbl-s mid" x="75" y="279" style="font-size:12px">bit 1</text><text class="lbl-s mid" x="110" y="279" style="font-size:12px">bit 0</text>
 <text class="cm" x="140" y="256">// which exit, on 3 LEDs</text>
 </svg></div><div class="body"><span class="meta">2026, Smart Technology Hackathon</span><h3>AM demodulator for a maze robot</h3><p>The circuit I designed so our Hackathon maze robot knows which exit to take: a 40 kHz ultrasonic signal is amplified, demodulated, filtered and decoded on a Pico 2W.</p><ul class="tags"><li>MCP6002</li><li>Sallen-Key</li><li>envelope detector</li><li>Pico 2W</li></ul></div></a>
-<a class="card" href="fpga-sobel.html"><div class="shot"><svg viewBox="0 0 440 380" aria-hidden="true" focusable="false">
+<a class="card" href="/fpga-sobel"><div class="shot"><svg viewBox="0 0 440 380" aria-hidden="true" focusable="false">
 <text class="lbl-s" x="20" y="40">pixels in</text>
 <rect class="ink" x="20" y="52" width="16" height="16"/>
 <rect class="ink" x="40" y="52" width="16" height="16"/>
@@ -191,7 +191,7 @@
 <text class="cm mid" x="245" y="359">// tready low: p2 has to wait</text>
 <line class="cm-line" x1="245" y1="344" x2="245" y2="325" marker-end="url(#ahc)"/>
 </svg></div><div class="body"><span class="meta">2025/26, EAT course</span><h3>FPGA Sobel accelerator and stack processor</h3><p>An edge detection accelerator in Clash with an AXI4-Stream interface, built after a stack processor and a Verilog state machine.</p><ul class="tags"><li>Clash</li><li>Verilog</li><li>AXI4-Stream</li></ul></div></a>
-<a class="card" href="cabin-scheduling.html"><div class="shot"><svg viewBox="0 0 440 300" aria-hidden="true" focusable="false">
+<a class="card" href="/cabin-scheduling"><div class="shot"><svg viewBox="0 0 440 300" aria-hidden="true" focusable="false">
 <line class="grid-r" x1="120" y1="50" x2="420" y2="50"/><line class="grid-r" x1="120" y1="90" x2="420" y2="90"/><line class="grid-r" x1="120" y1="130" x2="420" y2="130"/><line class="grid-r" x1="120" y1="170" x2="420" y2="170"/><line class="grid-r" x1="120" y1="210" x2="420" y2="210"/>
 <text class="lbl-s" x="20" y="24" style="font-size:12px">high priority</text>
 <text class="lbl-s" x="20" y="54">pressure</text>
@@ -215,7 +215,7 @@
 <text class="cm" x="24" y="290">// most critical task, lowest priority</text>
 <line class="cm-line" x1="112" y1="276" x2="104" y2="226" marker-end="url(#ahc)"/>
 </svg></div><div class="body"><span class="meta">2026, SEPP course</span><h3>Real-time scheduling for aircraft cabin monitoring</h3><p>Rate Monotonic scheduling for a cabin pressure and oxygen monitor, where missing a deadline is not an option.</p><ul class="tags"><li>Rate Monotonic</li><li>real-time</li></ul></div></a>
-<a class="card" href="inter-actief.html"><div class="shot"><svg viewBox="0 0 440 330" aria-hidden="true" focusable="false">
+<a class="card" href="/inter-actief"><div class="shot"><svg viewBox="0 0 440 330" aria-hidden="true" focusable="false">
 <rect class="ink" x="10" y="10" width="420" height="270" rx="6"/>
 <line class="ink-thin" x1="10" y1="34" x2="430" y2="34"/>
 <circle class="ink-thin" cx="24" cy="22" r="4"/><circle class="ink-thin" cx="38" cy="22" r="4"/><circle class="ink-thin" cx="52" cy="22" r="4"/>
@@ -239,7 +239,7 @@
 <text class="cm" x="192" y="191">// only tutors who TA'd it</text>
 <text class="cm" x="18" y="314">// new tutors wait for admin approval</text>
 </svg></div><div class="body"><span class="meta">2024/25, module 4</span><h3>Tutoring platform for Inter-Actief</h3><p>A tutoring platform for the Computer Science study association. Best Project Award of the module.</p><ul class="tags"><li>Java</li><li>Vue.js</li><li>Scrum</li></ul></div></a>
-<a class="card" href="basketball-coach.html"><div class="shot"><svg viewBox="0 0 440 390" aria-hidden="true" focusable="false">
+<a class="card" href="/basketball-coach"><div class="shot"><svg viewBox="0 0 440 390" aria-hidden="true" focusable="false">
 <path class="ink-thin dash" d="M226 54 Q312 -18 398 126"/>
 <line class="ink" x1="428" y1="84" x2="428" y2="150"/>
 <ellipse class="ink" cx="406" cy="134" rx="20" ry="5"/>
@@ -267,7 +267,7 @@
 <text class="cm" x="14" y="150">// shoulder line</text>
 <text class="cm" x="104" y="62">// release</text>
 </svg></div><div class="body"><span class="meta">2025/26, 10 weeks</span><h3>Basketball shot coaching app</h3><p>A web app that checks a beginner&#x27;s shooting form with pose estimation and gives feedback by voice.</p><ul class="tags"><li>Vue.js</li><li>MediaPipe</li></ul></div></a>
-<a class="card wide" href="frc-drive.html"><div class="shot"><svg viewBox="0 0 440 360" aria-hidden="true" focusable="false">
+<a class="card wide" href="/frc-drive"><div class="shot"><svg viewBox="0 0 440 360" aria-hidden="true" focusable="false">
 <text class="lbl-s mid" x="220" y="30">front</text>
 <rect class="ink" x="100" y="40" width="240" height="240" rx="14"/>
 <rect class="ink-thin" x="112" y="52" width="216" height="216" rx="8"/>
@@ -320,7 +320,7 @@
     <div>
       <p>I got into engineering through robotics. At fifteen I joined my school’s FRC team, and I’ve liked the problems where software meets physics ever since: motors that saturate, sensors that lie and code that has milliseconds to react.</p>
       <p>Outside the lab I’m Vice President and HR Manager of ESN Twente, the student association for international students. Next, I want to work on safety-critical embedded systems and do a master’s in Embedded Systems.</p>
-      <p><a href="about.html">More about me</a></p>
+      <p><a href="/about">More about me</a></p>
     </div>
   </div>
 </section>

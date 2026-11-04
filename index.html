@@ -35,6 +35,7 @@
       <li><a href="index.html#projects">projects/</a>
         <ul>
           <li><a href="edge-ai.html">edge-ai</a></li>
+          <li><a href="am-demodulator.html">am-demodulator</a></li>
           <li><a href="fpga-sobel.html">fpga-sobel</a></li>
           <li><a href="cabin-scheduling.html">cabin-scheduling</a></li>
           <li><a href="inter-actief.html">inter-actief</a></li>
@@ -69,7 +70,7 @@
 
 <section class="sec" id="projects" aria-labelledby="projects-title">
   <h2 id="projects-title">Projects</h2>
-  <p class="intro">Six things I’ve built, from my degree and from before it. Each one has its own page with a sketch of how it works and what my part was.</p>
+  <p class="intro">Seven things I’ve built, from my degree and from before it. Each one has its own page with a sketch of how it works and what my part was.</p>
   <div class="cards">
 <a class="card wide" href="edge-ai.html"><div class="shot"><svg viewBox="0 0 440 400" aria-hidden="true" focusable="false">
 <rect class="ink" x="200" y="24" width="56" height="40" rx="4"/>
@@ -107,6 +108,36 @@
 <text class="cm" x="22" y="319">// we kept 15%</text>
 <line class="cm-line" x1="58" y1="252" x2="80" y2="206" marker-end="url(#ahc)"/>
 </svg></div><div class="body"><span class="meta">2026, Intelligent Embedded Systems capstone</span><h3>Edge AI ecological monitoring system</h3><p>A farm camera that spots animals and decides whether they threaten livestock. It runs fully on a Raspberry Pi 5 with a Hailo-10H accelerator.</p><ul class="tags"><li>YOLO11</li><li>Hailo</li><li>INT8</li><li>Python</li><li>SQLite</li></ul></div></a>
+<a class="card wide" href="am-demodulator.html"><div class="shot"><svg viewBox="0 0 440 300" aria-hidden="true" focusable="false">
+<text class="cm" x="15" y="16">// everything biased at VMID = 2.5 V</text>
+<rect class="ink" x="15" y="30" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="75" y="52">Receiver</text><text class="lbl-s mid" x="75" y="70">40 kHz ultrasonic</text>
+<line class="ink" x1="135" y1="55" x2="156" y2="55" marker-end="url(#ah)"/>
+<rect class="ink" x="160" y="30" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="220" y="52">Amplifier</text><text class="lbl-s mid" x="220" y="70">MCP6002, gain 33</text>
+<line class="ink" x1="280" y1="55" x2="301" y2="55" marker-end="url(#ah)"/>
+<rect class="ink" x="305" y="30" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="365" y="52">Envelope</text><text class="lbl-s mid" x="365" y="70">Schottky + RC</text>
+<line class="ink" x1="365" y1="80" x2="365" y2="156" marker-end="url(#ah)"/>
+<path class="ink-thin" d="M378 104 l3 -9 l3 18 l3 -18 l3 18 l3 -18 l3 18 l3 -9"/>
+<path class="ink-thin" d="M378 136 C386 124 394 124 402 136"/>
+<text class="cm end" x="352" y="122">// carrier out,</text>
+<text class="cm end" x="352" y="139">// envelope stays</text>
+<rect class="ink" x="305" y="160" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="365" y="182">Low-pass</text><text class="lbl-s mid" x="365" y="200">Sallen-Key, 2 kHz</text>
+<line class="ink" x1="305" y1="185" x2="284" y2="185" marker-end="url(#ah)"/>
+<rect class="ink" x="160" y="160" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="220" y="182">Level shift</text><text class="lbl-s mid" x="220" y="200">to 1.65 V</text>
+<line class="ink" x1="160" y1="185" x2="139" y2="185" marker-end="url(#ah)"/>
+<rect class="ink" x="15" y="160" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="75" y="182">Pico 2W</text><text class="lbl-s mid" x="75" y="200">ADC0, decoder</text>
+<line class="ink" x1="75" y1="210" x2="75" y2="232"/>
+<line class="ink-thin" x1="40" y1="232" x2="110" y2="232"/>
+<line class="ink-thin" x1="40" y1="232" x2="40" y2="242"/><line class="ink-thin" x1="75" y1="232" x2="75" y2="242"/><line class="ink-thin" x1="110" y1="232" x2="110" y2="242"/>
+<circle class="ink" cx="40" cy="251" r="9"/><circle class="ink" cx="75" cy="251" r="9"/><circle class="solid" cx="110" cy="251" r="9"/>
+<text class="lbl-s mid" x="40" y="279" style="font-size:12px">bit 2</text><text class="lbl-s mid" x="75" y="279" style="font-size:12px">bit 1</text><text class="lbl-s mid" x="110" y="279" style="font-size:12px">bit 0</text>
+<text class="cm" x="140" y="256">// which exit, on 3 LEDs</text>
+</svg></div><div class="body"><span class="meta">2026, Smart Technology Hackathon</span><h3>AM demodulator for a maze robot</h3><p>The circuit I designed so our Hackathon maze robot knows which exit to take: a 40 kHz ultrasonic signal is amplified, demodulated, filtered and decoded on a Pico 2W.</p><ul class="tags"><li>MCP6002</li><li>Sallen-Key</li><li>envelope detector</li><li>Pico 2W</li></ul></div></a>
 <a class="card" href="fpga-sobel.html"><div class="shot"><svg viewBox="0 0 440 380" aria-hidden="true" focusable="false">
 <text class="lbl-s" x="20" y="40">pixels in</text>
 <rect class="ink" x="20" y="52" width="16" height="16"/>

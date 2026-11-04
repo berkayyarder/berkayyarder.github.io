@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AM demodulator for a maze robot | Berkay Yarder</title>
+<meta name="description" content="The receiver circuit for our Hackathon maze robot. It picks up an amplitude-modulated 40 kHz ultrasonic signal, turns it into a clean voltage and lets a Raspberry Pi Pico 2W decode which exit the robot has to go to. I designed and built this circuit.">
+<meta property="og:title" content="AM demodulator for a maze robot | Berkay Yarder">
+<meta property="og:description" content="The receiver circuit for our Hackathon maze robot. It picks up an amplitude-modulated 40 kHz ultrasonic signal, turns it into a clean voltage and lets a Raspberry Pi Pico 2W decode which exit the robot has to go to. I designed and built this circuit.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#111418">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111418'/%3E%3Cpath d='M4 21h5V10h7v11h6V10h6' fill='none' stroke='%23F2B53F' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-next@5.3.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-next@5.3.0/wght-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/atkinson-hyperlegible-mono@5.3.0/index.css">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="5"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mkc" d="M0 0 L10 5 L0 10 z"/></marker>
+</defs></svg>
+<header class="side">
+  <a class="me" href="index.html"><img src="photo.jpg" alt="" width="44" height="44"><span><b>Berkay Yarder</b><small>TCS student, University of Twente</small></span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="tree">Menu</button>
+  <nav class="tree" id="tree" aria-label="Site">
+    <div class="root">~/berkay</div>
+    <ul>
+      <li><a href="index.html">home</a></li>
+      <li><a href="index.html#projects">projects/</a>
+        <ul>
+          <li><a href="edge-ai.html">edge-ai</a></li>
+          <li><a href="am-demodulator.html" aria-current="page">am-demodulator</a></li>
+          <li><a href="fpga-sobel.html">fpga-sobel</a></li>
+          <li><a href="cabin-scheduling.html">cabin-scheduling</a></li>
+          <li><a href="inter-actief.html">inter-actief</a></li>
+          <li><a href="basketball-coach.html">basketball-coach</a></li>
+          <li><a href="frc-drive.html">frc-drive</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="cv.pdf" download="Berkay_Yarder_CV.pdf">cv.pdf</a></li>
+    </ul>
+  </nav>
+  <div class="side-foot"><a href="mailto:mberkayyarder@gmail.com">mberkayyarder@gmail.com</a><br>Enschede, the Netherlands</div>
+</header>
+<main class="main" id="content">
+<div class="wrap">
+
+<p class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / am-demodulator</p>
+<h1 class="ptitle">AM demodulator for a maze robot</h1>
+<p class="summary">The receiver circuit for our Hackathon maze robot. It picks up an amplitude-modulated 40 kHz ultrasonic signal, turns it into a clean voltage and lets a Raspberry Pi Pico 2W decode which exit the robot has to go to. I designed and built this circuit.</p>
+<dl class="spec"><div><dt>Year</dt><dd>2026</dd></div><div><dt>Context</dt><dd>Smart Technology Hackathon, part 2, University of Twente</dd></div><div><dt>Team</dt><dd>Team project, my part: the AM demodulator</dd></div><div><dt>Controller</dt><dd>Raspberry Pi Pico 2W</dd></div></dl>
+<ul class="tags"><li>MCP6002</li><li>envelope detector</li><li>Sallen-Key low-pass</li><li>level shifting</li><li>ADC</li><li>PID</li><li>ultrasonic sensors</li><li>L298N</li><li>USB-C PD</li></ul>
+<div class="shots"><figure class="pfig shotfig"><a class="in" href="am-schematic.png" target="_blank" rel="noopener"><img src="am-schematic.png" alt="Full schematic of the AM demodulator: receiver, two-stage amplifier, envelope detector, Sallen-Key low-pass, level shift, Raspberry Pi Pico 2W with three LEDs, and the power section." width="1600" height="931" loading="lazy" decoding="async"></a><figcaption><b>Fig. 1</b> The full circuit I drew and built. Click to open it at full size.</figcaption></figure></div><figure class="pfig"><div class="in"><svg viewBox="0 0 440 300" role="img" aria-label="Signal chain sketch: 40 kHz receiver, amplifier with gain 33, envelope detector, 2 kHz low-pass filter, level shift to 1.65 V, then the Pico 2W ADC, which shows a 3-bit code on three LEDs.">
+<text class="cm" x="15" y="16">// everything biased at VMID = 2.5 V</text>
+<rect class="ink" x="15" y="30" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="75" y="52">Receiver</text><text class="lbl-s mid" x="75" y="70">40 kHz ultrasonic</text>
+<line class="ink" x1="135" y1="55" x2="156" y2="55" marker-end="url(#ah)"/>
+<rect class="ink" x="160" y="30" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="220" y="52">Amplifier</text><text class="lbl-s mid" x="220" y="70">MCP6002, gain 33</text>
+<line class="ink" x1="280" y1="55" x2="301" y2="55" marker-end="url(#ah)"/>
+<rect class="ink" x="305" y="30" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="365" y="52">Envelope</text><text class="lbl-s mid" x="365" y="70">Schottky + RC</text>
+<line class="ink" x1="365" y1="80" x2="365" y2="156" marker-end="url(#ah)"/>
+<path class="ink-thin" d="M378 104 l3 -9 l3 18 l3 -18 l3 18 l3 -18 l3 18 l3 -9"/>
+<path class="ink-thin" d="M378 136 C386 124 394 124 402 136"/>
+<text class="cm end" x="352" y="122">// carrier out,</text>
+<text class="cm end" x="352" y="139">// envelope stays</text>
+<rect class="ink" x="305" y="160" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="365" y="182">Low-pass</text><text class="lbl-s mid" x="365" y="200">Sallen-Key, 2 kHz</text>
+<line class="ink" x1="305" y1="185" x2="284" y2="185" marker-end="url(#ah)"/>
+<rect class="ink" x="160" y="160" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="220" y="182">Level shift</text><text class="lbl-s mid" x="220" y="200">to 1.65 V</text>
+<line class="ink" x1="160" y1="185" x2="139" y2="185" marker-end="url(#ah)"/>
+<rect class="ink" x="15" y="160" width="120" height="50" rx="3"/>
+<text class="lbl mid" x="75" y="182">Pico 2W</text><text class="lbl-s mid" x="75" y="200">ADC0, decoder</text>
+<line class="ink" x1="75" y1="210" x2="75" y2="232"/>
+<line class="ink-thin" x1="40" y1="232" x2="110" y2="232"/>
+<line class="ink-thin" x1="40" y1="232" x2="40" y2="242"/><line class="ink-thin" x1="75" y1="232" x2="75" y2="242"/><line class="ink-thin" x1="110" y1="232" x2="110" y2="242"/>
+<circle class="ink" cx="40" cy="251" r="9"/><circle class="ink" cx="75" cy="251" r="9"/><circle class="solid" cx="110" cy="251" r="9"/>
+<text class="lbl-s mid" x="40" y="279" style="font-size:12px">bit 2</text><text class="lbl-s mid" x="75" y="279" style="font-size:12px">bit 1</text><text class="lbl-s mid" x="110" y="279" style="font-size:12px">bit 0</text>
+<text class="cm" x="140" y="256">// which exit, on 3 LEDs</text>
+</svg></div><figcaption><b>Fig. 2</b> The signal chain, simplified. Each block is one stage of the circuit in the schematic above.</figcaption></figure>
+<div class="prose">
+<h2>What it does</h2>
+<p>The robot has to find the finish point of a maze. An amplitude-modulated 40 kHz ultrasonic signal tells it which exit to go to. My circuit turns what the receiver picks up into a clean, slow voltage that the Pico can sample, and the decoder code on the Pico shows the exit as a 3-bit code on a red, a blue and a yellow LED.</p>
+<h2>How the signal chain works</h2>
+<ul>
+<li><b>Amplifier.</b> The receiver gives a tiny signal, so two MCP6002 op-amp stages amplify it by 11 and then 3, so 33 in total. Both stages are biased at VMID, 2.5 V from a resistor divider, so the circuit runs on a single 5 V supply.</li>
+<li><b>Envelope detector.</b> A coupling capacitor removes the DC level, then a Schottky diode with an 18 nF capacitor and a 10 kΩ resistor follows the peaks. The 40 kHz carrier disappears and only the envelope, the actual message, is left.</li>
+<li><b>Low-pass filter.</b> A second order Sallen-Key filter with its −3 dB point at 2 kHz smooths away what’s left of the carrier ripple.</li>
+<li><b>Level shift.</b> The signal is AC coupled onto 1.65 V, the middle of the Pico’s 0 to 3.3 V ADC range, and goes into GP26 (ADC0) through a 1 kΩ resistor.</li>
+<li><b>Decoding.</b> The Pico samples the envelope, decodes it and drives the three code LEDs on GP18, GP19 and GP20.</li>
+</ul>
+<h2>Driving through the maze</h2>
+<p>The robot steers with a PID controller fed by ultrasonic distance sensors. The decoded exit tells it where to go.</p>
+<h2>Power and motor drive</h2>
+<p>A USB-C power bank with a PD trigger set to 12 V feeds the L298N H-bridge that drives the motors. The analogue part gets its own 5 V rail from the L298N’s 5 V output through a 10 Ω and 100 µF filter (corner around 160 Hz), so motor noise stays out of the amplifier. The Pico gets its VSYS through a Schottky diode, and everything meets at one star ground point.</p>
+<h2>Result</h2>
+<p class="result">My part of the project, the demodulator, is finished. The team runs everything, from AM decoding to navigation, on the same Pico 2W.</p>
+</div>
+<nav class="pn" aria-label="More projects"><a class="prev" href="edge-ai.html"><small>Previous</small>Edge AI ecological monitoring system</a><a class="next" href="fpga-sobel.html"><small>Next</small>FPGA Sobel accelerator and stack processor</a></nav>
+
+<footer class="foot">
+  <span>Muhammed Berkay Yarder, Enschede</span>
+  <span>Last updated November 2026. Plain HTML and CSS, hosted on GitHub Pages.</span>
+</footer>
+</div>
+</main>
+</body>
+</html>
